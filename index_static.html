@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Task Priority Predictor - Static Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .demo-notice {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .demo-notice h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+        .demo-notice p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        .static-demo {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .sample-tasks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .sample-task {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #007bff;
+        }
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .task-title {
+            font-weight: bold;
+            color: #333;
+        }
+        .priority-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .priority-high {
+            background: #ff6b6b;
+            color: white;
+        }
+        .priority-medium {
+            background: #ffa726;
+            color: white;
+        }
+        .priority-low {
+            background: #66bb6a;
+            color: white;
+        }
+        .task-details {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .task-reasoning {
+            font-style: italic;
+            color: #555;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+        .deployment-info {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .deployment-info h4 {
+            color: #1976d2;
+            margin-top: 0;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Task Priority Predictor</h1>
+            <p class="subtitle">Intelligent task prioritization powered by machine learning</p>
+        </header>
+
+        <div class="demo-notice">
+            <h3>📱 Static Demo Version</h3>
+            <p>This is a demonstration version that works on GitHub Pages. For full functionality with AI predictions, deploy the complete version with API server.</p>
+        </div>
+
+        <div class="deployment-info">
+            <h4>🚀 Deployment Instructions</h4>
+            <p>To deploy this project to GitHub:</p>
+            <div class="code-block">
+# 1. Initialize Git repository
+git init
+git add .
+git commit -m "Initial commit"
+
+# 2. Create GitHub repository and connect
+git remote add origin https://github.com/YOUR_USERNAME/task-priority-predictor.git
+git push -u origin main
+
+# 3. Enable GitHub Pages in repository settings
+# Go to Settings > Pages > Source: Deploy from branch > main
+            </div>
+            <p><strong>Full deployment guide:</strong> See <code>DEPLOYMENT.md</code> for detailed instructions.</p>
+        </div>
+
+        <div class="static-demo">
+            <h3>🎯 Sample Task Predictions</h3>
+            <p>Here are some example task predictions that the AI system would generate:</p>
+            
+            <div class="sample-tasks">
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Reply to client email</span>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Email | <strong>Time:</strong> Morning | <strong>Urgency:</strong> High
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> High urgency task + Morning time slot (typically high productivity period)
+                    </div>
+                </div>
+
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Code review</span>
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Coding | <strong>Time:</strong> Afternoon | <strong>Urgency:</strong> Medium
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Based on learned patterns from historical data
+                    </div>
+                </div>
+
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Research new technologies</span>
+                        <span class="priority-badge priority-low">LOW</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Research | <strong>Time:</strong> Evening | <strong>Urgency:</strong> Low
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Evening tasks typically have lower priority in learned patterns
+                    </div>
+                </div>
+
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Team meeting preparation</span>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Meeting | <strong>Time:</strong> Morning | <strong>Urgency:</strong> High
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Morning + High urgency combination triggers high priority
+                    </div>
+                </div>
+
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Update documentation</span>
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Review | <strong>Time:</strong> Afternoon | <strong>Urgency:</strong> Medium
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Afternoon review tasks show medium priority in patterns
+                    </div>
+                </div>
+
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Personal project work</span>
+                        <span class="priority-badge priority-low">LOW</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Personal | <strong>Time:</strong> Evening | <strong>Urgency:</strong> Low
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Personal tasks in evening typically have lower priority
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>✨ Key Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🧠 AI Learning</h4>
+                    <p>Learns from your task completion patterns to improve predictions over time</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Pattern Analysis</h4>
+                    <p>Analyzes productivity patterns by time of day, task type, and urgency</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🎯 Smart Prioritization</h4>
+                    <p>Uses both rule-based logic and machine learning for accurate predictions</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💡 Reasoning</h4>
+                    <p>Provides clear explanations for each priority prediction</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="deployment-info">
+            <h4>🔧 Full Version Deployment</h4>
+            <p>For the complete version with AI predictions and API server:</p>
+            <div class="code-block">
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the API server
+python api_server.py
+
+# Visit http://localhost:5000 for full functionality
+            </div>
+            <p><strong>Cloud deployment options:</strong> Heroku, Railway, Render, or any Python hosting service.</p>
+        </div>
+
+        <footer>
+            <p>Built for AI Ignite Week - Demonstrating practical AI applications for productivity enhancement!</p>
+            <div class="links">
+                <a href="https://github.com/YOUR_USERNAME/task-priority-predictor" target="_blank">📁 GitHub Repository</a>
+                <a href="DEPLOYMENT.md">📖 Deployment Guide</a>
+                <a href="README.md">📚 Documentation</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Add some interactivity to the static demo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effects to sample tasks
+            const sampleTasks = document.querySelectorAll('.sample-task');
+            sampleTasks.forEach(task => {
+                task.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // Add hover effects
+            sampleTasks.forEach(task => {
+                task.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+                });
+                task.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

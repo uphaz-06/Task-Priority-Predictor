@@ -1,0 +1,42 @@
+[
+  {
+    "task_description": "Reply to client email",
+    "task_type": "email",
+    "time_of_day": "morning",
+    "urgency": "high",
+    "predicted_priority": "HIGH",
+    "confidence": "100.0%"
+  },
+  {
+    "task_description": "Code review",
+    "task_type": "review",
+    "time_of_day": "afternoon",
+    "urgency": "medium",
+    "predicted_priority": "HIGH",
+    "confidence": "100.0%"
+  },
+  {
+    "task_description": "Research new technology",
+    "task_type": "research",
+    "time_of_day": "morning",
+    "urgency": "low",
+    "predicted_priority": "HIGH",
+    "confidence": "60.0%"
+  },
+  {
+    "task_description": "Team standup meeting",
+    "task_type": "meeting",
+    "time_of_day": "morning",
+    "urgency": "high",
+    "predicted_priority": "LOW",
+    "confidence": "100.0%"
+  },
+  {
+    "task_description": "Update documentation",
+    "task_type": "coding",
+    "time_of_day": "afternoon",
+    "urgency": "medium",
+    "predicted_priority": "MEDIUM",
+    "confidence": "100.0%"
+  }
+]

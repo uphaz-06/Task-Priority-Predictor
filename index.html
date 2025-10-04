@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Task Priority Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>AI Task Priority Predictor</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#predict" class="nav-link">Predict</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Smart Task Prioritization with AI</h2>
+                    <p class="hero-description">
+                        Learn from your productivity patterns and get intelligent task prioritization 
+                        based on your personal work habits and preferences.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Tasks Analyzed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Learning</div>
+                        </div>
+                    </div>
+                    <button class="cta-button" onclick="scrollToSection('predict')">
+                        <i class="fas fa-rocket"></i>
+                        Start Predicting
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <div class="ai-brain">
+                        <i class="fas fa-brain"></i>
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring delay-1"></div>
+                        <div class="pulse-ring delay-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Section -->
+        <section id="predict" class="predict-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Task Priority Predictor</h2>
+                    <p>Enter your task details and let AI predict the optimal priority</p>
+                </div>
+
+                <div class="predict-form-container">
+                    <form id="taskForm" class="predict-form">
+                        <div class="form-group">
+                            <label for="taskDescription">Task Description</label>
+                            <input type="text" id="taskDescription" placeholder="e.g., Reply to client email" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="taskType">Task Type</label>
+                                <select id="taskType" required>
+                                    <option value="">Select task type</option>
+                                    <option value="email">📧 Email</option>
+                                    <option value="coding">💻 Coding</option>
+                                    <option value="meeting">👥 Meeting</option>
+                                    <option value="personal">🏠 Personal</option>
+                                    <option value="research">🔍 Research</option>
+                                    <option value="review">📝 Review</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timeOfDay">Time of Day</label>
+                                <select id="timeOfDay" required>
+                                    <option value="">Select time</option>
+                                    <option value="morning">🌅 Morning (6AM-12PM)</option>
+                                    <option value="afternoon">☀️ Afternoon (12PM-6PM)</option>
+                                    <option value="evening">🌙 Evening (6PM-12AM)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="urgency">Urgency Level</label>
+                                <select id="urgency" required>
+                                    <option value="">Select urgency</option>
+                                    <option value="high">🔴 High</option>
+                                    <option value="medium">🟡 Medium</option>
+                                    <option value="low">🟢 Low</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="predict-button">
+                            <i class="fas fa-magic"></i>
+                            Predict Priority
+                        </button>
+                    </form>
+
+                    <!-- Prediction Results -->
+                    <div id="predictionResults" class="prediction-results" style="display: none;">
+                        <div class="result-card">
+                            <div class="result-header">
+                                <h3>Prediction Result</h3>
+                                <div class="confidence-badge" id="confidenceBadge"></div>
+                            </div>
+                            <div class="result-content">
+                                <div class="priority-display" id="priorityDisplay"></div>
+                                <div class="reasoning" id="reasoning"></div>
+                                <div class="confidence-meter">
+                                    <div class="confidence-label">Confidence Level</div>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" id="confidenceFill"></div>
+                                    </div>
+                                    <div class="confidence-text" id="confidenceText"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Predictions -->
+                <div class="quick-predictions">
+                    <h3>Quick Predictions</h3>
+                    <div class="quick-tasks">
+                        <button class="quick-task" onclick="quickPredict('Reply to client email', 'email', 'morning', 'high')">
+                            📧 Reply to client email
+                        </button>
+                        <button class="quick-task" onclick="quickPredict('Code review', 'review', 'afternoon', 'medium')">
+                            📝 Code review
+                        </button>
+                        <button class="quick-task" onclick="quickPredict('Research new tech', 'research', 'morning', 'low')">
+                            🔍 Research new tech
+                        </button>
+                        <button class="quick-task" onclick="quickPredict('Team meeting', 'meeting', 'morning', 'high')">
+                            👥 Team meeting
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="analytics-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Productivity Analytics</h2>
+                    <p>Insights from your task completion patterns</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Priority Distribution</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="priorityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <i class="fas fa-clock"></i>
+                            <h3>Time Preferences</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="timeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <i class="fas fa-tasks"></i>
+                            <h3>Task Types</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="taskTypeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <i class="fas fa-trending-up"></i>
+                            <h3>Productivity Trends</h3>
+                        </div>
+                        <div class="trend-container">
+                            <div class="trend-item">
+                                <span class="trend-label">Morning Productivity</span>
+                                <div class="trend-bar">
+                                    <div class="trend-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="trend-value">85%</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-label">Afternoon Focus</span>
+                                <div class="trend-bar">
+                                    <div class="trend-fill" style="width: 72%"></div>
+                                </div>
+                                <span class="trend-value">72%</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-label">Evening Tasks</span>
+                                <div class="trend-bar">
+                                    <div class="trend-fill" style="width: 45%"></div>
+                                </div>
+                                <span class="trend-value">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It Works</h2>
+                    <p>Understanding the AI behind task prioritization</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Collection</h3>
+                        <p>Analyzes your task completion patterns, time preferences, and productivity rhythms to build a personalized model.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Pattern Learning</h3>
+                        <p>Uses machine learning algorithms to identify recurring patterns in your work habits and task preferences.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Smart Prediction</h3>
+                        <p>Predicts optimal task priorities based on learned patterns, providing confidence scores and reasoning.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Continuous Learning</h3>
+                        <p>Continuously adapts and improves predictions as you complete more tasks and provide feedback.</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <h3>Technology Stack</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-tree"></i>
+                            <span>Decision Trees</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI Task Priority Predictor</h4>
+                    <p>Intelligent task prioritization based on your personal productivity patterns.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Smart Predictions</li>
+                        <li>Pattern Analysis</li>
+                        <li>Real-time Learning</li>
+                        <li>Confidence Scoring</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Technology</h4>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Decision Trees</li>
+                        <li>Pattern Recognition</li>
+                        <li>Data Analytics</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Task Priority Predictor. Built for AI Ignite Week.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-brain fa-spin"></i>
+            <p>AI is thinking...</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script_api.js"></script>
+</body>
+</html>
