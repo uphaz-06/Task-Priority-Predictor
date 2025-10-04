@@ -3,349 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Task Priority Predictor</title>
+    <title>AI Task Priority Predictor - Static Demo</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .demo-notice {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .demo-notice h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+        .demo-notice p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        .static-demo {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .sample-tasks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .sample-task {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #007bff;
+        }
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .task-title {
+            font-weight: bold;
+            color: #333;
+        }
+        .priority-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .priority-high {
+            background: #ff6b6b;
+            color: white;
+        }
+        .priority-medium {
+            background: #ffa726;
+            color: white;
+        }
+        .priority-low {
+            background: #66bb6a;
+            color: white;
+        }
+        .task-details {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .task-reasoning {
+            font-style: italic;
+            color: #555;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+        .deployment-info {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .deployment-info h4 {
+            color: #1976d2;
+            margin-top: 0;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-brain"></i>
-                <h1>AI Task Priority Predictor</h1>
-            </div>
-            <nav class="nav">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#predict" class="nav-link">Predict</a>
-                <a href="#analytics" class="nav-link">Analytics</a>
-                <a href="#about" class="nav-link">About</a>
-            </nav>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Task Priority Predictor</h1>
+            <p class="subtitle">Intelligent task prioritization powered by machine learning</p>
+        </header>
+
+        <div class="demo-notice">
+            <h3>📱 Static Demo Version</h3>
+            <p>This is a demonstration version that works on GitHub Pages. For full functionality with AI predictions, deploy the complete version with API server.</p>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main">
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2 class="hero-title">Smart Task Prioritization with AI</h2>
-                    <p class="hero-description">
-                        Learn from your productivity patterns and get intelligent task prioritization 
-                        based on your personal work habits and preferences.
-                    </p>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Tasks Analyzed</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">95%</div>
-                            <div class="stat-label">Accuracy</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Learning</div>
-                        </div>
-                    </div>
-                    <button class="cta-button" onclick="scrollToSection('predict')">
-                        <i class="fas fa-rocket"></i>
-                        Start Predicting
-                    </button>
-                </div>
-                <div class="hero-visual">
-                    <div class="ai-brain">
-                        <i class="fas fa-brain"></i>
-                        <div class="pulse-ring"></div>
-                        <div class="pulse-ring delay-1"></div>
-                        <div class="pulse-ring delay-2"></div>
-                    </div>
-                </div>
+        <div class="deployment-info">
+            <h4>🚀 Deployment Instructions</h4>
+            <p>To deploy this project to GitHub:</p>
+            <div class="code-block">
+# 1. Initialize Git repository
+git init
+git add .
+git commit -m "Initial commit"
+
+# 2. Create GitHub repository and connect
+git remote add origin https://github.com/YOUR_USERNAME/task-priority-predictor.git
+git push -u origin main
+
+# 3. Enable GitHub Pages in repository settings
+# Go to Settings > Pages > Source: Deploy from branch > main
             </div>
-        </section>
+            <p><strong>Full deployment guide:</strong> See <code>DEPLOYMENT.md</code> for detailed instructions.</p>
+        </div>
 
-        <!-- Prediction Section -->
-        <section id="predict" class="predict-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Task Priority Predictor</h2>
-                    <p>Enter your task details and let AI predict the optimal priority</p>
-                </div>
-
-                <div class="predict-form-container">
-                    <form id="taskForm" class="predict-form">
-                        <div class="form-group">
-                            <label for="taskDescription">Task Description</label>
-                            <input type="text" id="taskDescription" placeholder="e.g., Reply to client email" required>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="taskType">Task Type</label>
-                                <select id="taskType" required>
-                                    <option value="">Select task type</option>
-                                    <option value="email">📧 Email</option>
-                                    <option value="coding">💻 Coding</option>
-                                    <option value="meeting">👥 Meeting</option>
-                                    <option value="personal">🏠 Personal</option>
-                                    <option value="research">🔍 Research</option>
-                                    <option value="review">📝 Review</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="timeOfDay">Time of Day</label>
-                                <select id="timeOfDay" required>
-                                    <option value="">Select time</option>
-                                    <option value="morning">🌅 Morning (6AM-12PM)</option>
-                                    <option value="afternoon">☀️ Afternoon (12PM-6PM)</option>
-                                    <option value="evening">🌙 Evening (6PM-12AM)</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="urgency">Urgency Level</label>
-                                <select id="urgency" required>
-                                    <option value="">Select urgency</option>
-                                    <option value="high">🔴 High</option>
-                                    <option value="medium">🟡 Medium</option>
-                                    <option value="low">🟢 Low</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="predict-button">
-                            <i class="fas fa-magic"></i>
-                            Predict Priority
-                        </button>
-                    </form>
-
-                    <!-- Prediction Results -->
-                    <div id="predictionResults" class="prediction-results" style="display: none;">
-                        <div class="result-card">
-                            <div class="result-header">
-                                <h3>Prediction Result</h3>
-                                <div class="confidence-badge" id="confidenceBadge"></div>
-                            </div>
-                            <div class="result-content">
-                                <div class="priority-display" id="priorityDisplay"></div>
-                                <div class="reasoning" id="reasoning"></div>
-                                <div class="confidence-meter">
-                                    <div class="confidence-label">Confidence Level</div>
-                                    <div class="confidence-bar">
-                                        <div class="confidence-fill" id="confidenceFill"></div>
-                                    </div>
-                                    <div class="confidence-text" id="confidenceText"></div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="static-demo">
+            <h3>🎯 Sample Task Predictions</h3>
+            <p>Here are some example task predictions that the AI system would generate:</p>
+            
+            <div class="sample-tasks">
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Reply to client email</span>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Email | <strong>Time:</strong> Morning | <strong>Urgency:</strong> High
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> High urgency task + Morning time slot (typically high productivity period)
                     </div>
                 </div>
 
-                <!-- Quick Predictions -->
-                <div class="quick-predictions">
-                    <h3>Quick Predictions</h3>
-                    <div class="quick-tasks">
-                        <button class="quick-task" onclick="quickPredict('Reply to client email', 'email', 'morning', 'high')">
-                            📧 Reply to client email
-                        </button>
-                        <button class="quick-task" onclick="quickPredict('Code review', 'review', 'afternoon', 'medium')">
-                            📝 Code review
-                        </button>
-                        <button class="quick-task" onclick="quickPredict('Research new tech', 'research', 'morning', 'low')">
-                            🔍 Research new tech
-                        </button>
-                        <button class="quick-task" onclick="quickPredict('Team meeting', 'meeting', 'morning', 'high')">
-                            👥 Team meeting
-                        </button>
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Code review</span>
+                        <span class="priority-badge priority-medium">MEDIUM</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Analytics Section -->
-        <section id="analytics" class="analytics-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Productivity Analytics</h2>
-                    <p>Insights from your task completion patterns</p>
-                </div>
-
-                <div class="analytics-grid">
-                    <div class="analytics-card">
-                        <div class="card-header">
-                            <i class="fas fa-chart-pie"></i>
-                            <h3>Priority Distribution</h3>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="priorityChart"></canvas>
-                        </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Coding | <strong>Time:</strong> Afternoon | <strong>Urgency:</strong> Medium
                     </div>
-
-                    <div class="analytics-card">
-                        <div class="card-header">
-                            <i class="fas fa-clock"></i>
-                            <h3>Time Preferences</h3>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="timeChart"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="analytics-card">
-                        <div class="card-header">
-                            <i class="fas fa-tasks"></i>
-                            <h3>Task Types</h3>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="taskTypeChart"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="analytics-card">
-                        <div class="card-header">
-                            <i class="fas fa-trending-up"></i>
-                            <h3>Productivity Trends</h3>
-                        </div>
-                        <div class="trend-container">
-                            <div class="trend-item">
-                                <span class="trend-label">Morning Productivity</span>
-                                <div class="trend-bar">
-                                    <div class="trend-fill" style="width: 85%"></div>
-                                </div>
-                                <span class="trend-value">85%</span>
-                            </div>
-                            <div class="trend-item">
-                                <span class="trend-label">Afternoon Focus</span>
-                                <div class="trend-bar">
-                                    <div class="trend-fill" style="width: 72%"></div>
-                                </div>
-                                <span class="trend-value">72%</span>
-                            </div>
-                            <div class="trend-item">
-                                <span class="trend-label">Evening Tasks</span>
-                                <div class="trend-bar">
-                                    <div class="trend-fill" style="width: 45%"></div>
-                                </div>
-                                <span class="trend-value">45%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>How It Works</h2>
-                    <p>Understanding the AI behind task prioritization</p>
-                </div>
-
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3>Data Collection</h3>
-                        <p>Analyzes your task completion patterns, time preferences, and productivity rhythms to build a personalized model.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>Pattern Learning</h3>
-                        <p>Uses machine learning algorithms to identify recurring patterns in your work habits and task preferences.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-magic"></i>
-                        </div>
-                        <h3>Smart Prediction</h3>
-                        <p>Predicts optimal task priorities based on learned patterns, providing confidence scores and reasoning.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3>Continuous Learning</h3>
-                        <p>Continuously adapts and improves predictions as you complete more tasks and provide feedback.</p>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Based on learned patterns from historical data
                     </div>
                 </div>
 
-                <div class="tech-stack">
-                    <h3>Technology Stack</h3>
-                    <div class="tech-items">
-                        <div class="tech-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Machine Learning</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-tree"></i>
-                            <span>Decision Trees</span>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript</span>
-                        </div>
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Research new technologies</span>
+                        <span class="priority-badge priority-low">LOW</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Research | <strong>Time:</strong> Evening | <strong>Urgency:</strong> Low
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Evening tasks typically have lower priority in learned patterns
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>AI Task Priority Predictor</h4>
-                    <p>Intelligent task prioritization based on your personal productivity patterns.</p>
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Team meeting preparation</span>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Meeting | <strong>Time:</strong> Morning | <strong>Urgency:</strong> High
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Morning + High urgency combination triggers high priority
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Features</h4>
-                    <ul>
-                        <li>Smart Predictions</li>
-                        <li>Pattern Analysis</li>
-                        <li>Real-time Learning</li>
-                        <li>Confidence Scoring</li>
-                    </ul>
+
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Update documentation</span>
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Review | <strong>Time:</strong> Afternoon | <strong>Urgency:</strong> Medium
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Afternoon review tasks show medium priority in patterns
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Technology</h4>
-                    <ul>
-                        <li>Machine Learning</li>
-                        <li>Decision Trees</li>
-                        <li>Pattern Recognition</li>
-                        <li>Data Analytics</li>
-                    </ul>
+
+                <div class="sample-task">
+                    <div class="task-header">
+                        <span class="task-title">Personal project work</span>
+                        <span class="priority-badge priority-low">LOW</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>Type:</strong> Personal | <strong>Time:</strong> Evening | <strong>Urgency:</strong> Low
+                    </div>
+                    <div class="task-reasoning">
+                        <strong>AI Reasoning:</strong> Personal tasks in evening typically have lower priority
+                    </div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 AI Task Priority Predictor. Built for AI Ignite Week.</p>
             </div>
         </div>
-    </footer>
 
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
-        <div class="loading-spinner">
-            <i class="fas fa-brain fa-spin"></i>
-            <p>AI is thinking...</p>
+        <div class="features">
+            <h3>✨ Key Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🧠 AI Learning</h4>
+                    <p>Learns from your task completion patterns to improve predictions over time</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Pattern Analysis</h4>
+                    <p>Analyzes productivity patterns by time of day, task type, and urgency</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🎯 Smart Prioritization</h4>
+                    <p>Uses both rule-based logic and machine learning for accurate predictions</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💡 Reasoning</h4>
+                    <p>Provides clear explanations for each priority prediction</p>
+                </div>
+            </div>
         </div>
+
+        <div class="deployment-info">
+            <h4>🔧 Full Version Deployment</h4>
+            <p>For the complete version with AI predictions and API server:</p>
+            <div class="code-block">
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the API server
+python api_server.py
+
+# Visit http://localhost:5000 for full functionality
+            </div>
+            <p><strong>Cloud deployment options:</strong> Heroku, Railway, Render, or any Python hosting service.</p>
+        </div>
+
+        <footer>
+            <p>Built for AI Ignite Week - Demonstrating practical AI applications for productivity enhancement!</p>
+            <div class="links">
+                <a href="https://github.com/YOUR_USERNAME/task-priority-predictor" target="_blank">📁 GitHub Repository</a>
+                <a href="DEPLOYMENT.md">📖 Deployment Guide</a>
+                <a href="README.md">📚 Documentation</a>
+            </div>
+        </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script_api.js"></script>
+    <script>
+        // Add some interactivity to the static demo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effects to sample tasks
+            const sampleTasks = document.querySelectorAll('.sample-task');
+            sampleTasks.forEach(task => {
+                task.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // Add hover effects
+            sampleTasks.forEach(task => {
+                task.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+                });
+                task.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
