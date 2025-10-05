@@ -37,23 +37,6 @@ python3 api_server.py
 # Visit http://localhost:5000
 ```
 
-## 🌐 GitHub Deployment
-
-### Quick Deploy to GitHub Pages
-1. **Fork or clone this repository**
-2. **Enable GitHub Pages** in repository settings
-3. **Visit your site** at `https://yourusername.github.io/task-priority-predictor`
-
-### Full Deployment Guide
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions including:
-- GitHub Pages setup
-- Cloud deployment (Heroku, Railway, Render)
-- Static vs dynamic deployment options
-- Troubleshooting guide
-
-### Static Demo
-For GitHub Pages compatibility, use `index_static.html` which provides a demonstration version without requiring a server.
-
 ## 📊 Features
 
 ### Sample Data Generation
